@@ -4,27 +4,28 @@ import jakarta.persistence.*;
 
 @Entity
 @Table
-public class Ciudad {
+
+public class Pais {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long Id;
     @Column(nullable = false)
     String nom;
 
+    public Pais() {
+    }
 
-    public Ciudad() {}
-
-    public Ciudad(long id, String nom) {
-        this.id = id;
+    public Pais(long id, String nom) {
+        Id = id;
         this.nom = nom;
     }
 
     public long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(long id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getNom() {
