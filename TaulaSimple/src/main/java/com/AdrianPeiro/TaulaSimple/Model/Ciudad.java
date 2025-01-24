@@ -12,6 +12,13 @@ public class Ciudad {
     String nom;
 
 
+    @OneToOne
+    @JoinColumn(name = "provincia_id", nullable = false)
+    private Provincia provincia;
+
+
+
+
     public Ciudad() {}
 
     public Ciudad(long id, String nom) {

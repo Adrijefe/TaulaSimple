@@ -2,6 +2,8 @@ package com.AdrianPeiro.TaulaSimple.Model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table
 public class Provincia {
@@ -10,6 +12,14 @@ public class Provincia {
     private long Id;
     @Column(nullable = false)
     String nom;
+
+
+
+    @OneToMany(mappedBy = "provincia",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ciudad> ciudads;
+
+
+
 
 
     public Provincia() {}
