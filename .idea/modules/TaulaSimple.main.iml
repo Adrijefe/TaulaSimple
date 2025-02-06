@@ -8,7 +8,9 @@
         <datasource-mapping>
           <factory-entry name="entityManagerFactory" value="8e25b230-73e0-498e-b046-12032d5e08c8" />
         </datasource-mapping>
-        <naming-strategy-map />
+        <naming-strategy-map>
+          <unit-entry name="entityManagerFactory" />
+        </naming-strategy-map>
       </configuration>
     </facet>
   </component>

@@ -6,31 +6,31 @@ import java.util.List;
 
 @Entity
 @Table
-
-public class Pais {
+public class Franquicia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    long id;
     @Column(nullable = false)
     String nom;
 
-    @OneToMany(mappedBy = "pais",cascade = CascadeType.ALL)
-    private List<Provincia> provincias;
+    @ManyToMany(mappedBy = "franquicia")
+    List<Ciudad> ciutats;
 
-    public Pais() {
+    public Franquicia() {
     }
 
-    public Pais(long id, String nom) {
-        Id = id;
+    public Franquicia(long id, String nom, List<Ciudad> ciutats) {
+        this.id = id;
         this.nom = nom;
+        this.ciutats = ciutats;
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getNom() {
@@ -41,11 +41,11 @@ public class Pais {
         this.nom = nom;
     }
 
-    public List<Provincia>getProvincias(){
-        return provincias;
+    public List<Ciudad> getCiutats() {
+        return ciutats;
     }
 
-    public void setProvincias(List<Provincia> provincias) {
-        this.provincias = provincias;
+    public void setCiutats(List<Ciudad> ciutats) {
+        this.ciutats = ciutats;
     }
 }

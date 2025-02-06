@@ -2,20 +2,33 @@ package com.AdrianPeiro.TaulaSimple.Model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table
 public class Ciudad {
     @Id
+    @Column(insertable=false, updatable=false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
     String nom;
+    int poblacio;
+    String descripcio;
+    String imagen;
 
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "provincia_id", nullable = false)
-    private Provincia provincia;
+     Provincia provincia;
 
+    @ManyToMany
+    @JoinTable(
+            name = "franquicia_ciudad",
+            joinColumns = @JoinColumn(name="idfranquicia"),
+            inverseJoinColumns = @JoinColumn(name = "idciudad")
+    )
+    List<Franquicia> franquicia;
 
 
 
@@ -40,5 +53,37 @@ public class Ciudad {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Provincia getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(Provincia provincia) {
+        this.provincia = provincia;
+    }
+
+    public int getPoblacio() {
+        return poblacio;
+    }
+
+    public void setPoblacio(int poblacio) {
+        this.poblacio = poblacio;
+    }
+
+    public String getDescripcio() {
+        return descripcio;
+    }
+
+    public void setDescripcio(String descripcio) {
+        this.descripcio = descripcio;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

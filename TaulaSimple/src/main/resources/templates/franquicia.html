@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Franquicias</title>
+  <meta charset="UTF-8">
+</head>
+<link rel="stylesheet" th:href="@{/css/franquicia.css}">
+
+<body>
+<h1>Lista de Franquicias</h1>
+<ul>
+  <li th:each="franquicia : ${franquicia}" th:text="${franquicia.id + ' - ' + franquicia.nom}"></li>
+</ul>
+</body>
+</html>

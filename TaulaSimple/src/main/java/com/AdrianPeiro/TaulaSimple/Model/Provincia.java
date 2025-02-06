@@ -1,40 +1,32 @@
 package com.AdrianPeiro.TaulaSimple.Model;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
-@Table
+@Table()
 public class Provincia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private long id;
+
     @Column(nullable = false)
-    String nom;
+    private String nom;
 
+    @ManyToOne
+    @JoinColumn(name = "pais_id", nullable = false) // La columna en la base de datos será 'pais_id'.
+    private Pais pais;
 
+    @OneToMany(mappedBy = "provincia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ciudad> ciudades;
 
-    @OneToMany(mappedBy = "provincia",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Ciudad> ciudads;
-
-
-
-
-
-    public Provincia() {}
-
-    public Provincia(long id, String nom) {
-        Id = id;
-        this.nom = nom;
-    }
-
+    // Getters y Setters
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getNom() {
@@ -43,5 +35,21 @@ public class Provincia {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+    public List<Ciudad> getCiudades() {
+        return ciudades;
+    }
+
+    public void setCiudades(List<Ciudad> ciudades) {
+        this.ciudades = ciudades;
     }
 }
