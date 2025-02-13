@@ -6,8 +6,25 @@
 </head>
 <body>
 <h1>Lista de Países</h1>
-<ul>
-    <li th:each="pais : ${paises}" th:text="${pais.nom}"></li>
-</ul>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Provincias</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pais : ${paises}">
+        <td th:text="${pais.id}"></td>
+        <td th:text="${pais.nom}"></td>
+        <td>
+            <ul>
+                <li th:each="provincia : ${pais.provincias}" th:text="${provincia.nom}"></li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

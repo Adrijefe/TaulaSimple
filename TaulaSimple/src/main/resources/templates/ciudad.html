@@ -23,6 +23,11 @@
         <td th:text="${ciutat.nom}"></td>
         <td th:text="${ciutat.poblacio}"></td>
         <td th:text = "${ciutat.descripcio}"></td>
+        <td>
+            <ul>
+                <li th:each="franquicia : ${ciutat.f}" th:text="${provincia.nom}"></li>
+            </ul>
+        </td>
     </tr>
     </tbody>
 </table>

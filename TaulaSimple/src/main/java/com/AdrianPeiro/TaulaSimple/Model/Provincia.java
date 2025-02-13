@@ -14,7 +14,7 @@ public class Provincia {
     private String nom;
 
     @ManyToOne
-    @JoinColumn(name = "pais_id", nullable = false) // La columna en la base de datos será 'pais_id'.
+    @JoinColumn(name = "pais_id", nullable = false)
     private Pais pais;
 
     @OneToMany(mappedBy = "provincia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

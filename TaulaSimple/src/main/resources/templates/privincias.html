@@ -5,9 +5,14 @@
     <link rel="stylesheet" th:href="@{/css/provincia.css}">
 </head>
 <body>
-<h1>Provincias del país: <span th:text="${pais}"></span></h1>
-<ul>
-    <li th:each="provincia : ${provincia}" th:text="${provincia.nom}"></li>
-</ul>
+<h1>Provincias del país</h1>
+<tr th:each="provincias : ${provincia}">
+    <td th:text="${provincias.id}"></td>
+    <td th:text="${provincias.nom}"></td>
+    <td>
+        <ul>
+            <li th:each="provincia : ${provincias.ciudades}" th:text="${provincia}"></li>
+        </ul>
+    </td>
 </body>
 </html>

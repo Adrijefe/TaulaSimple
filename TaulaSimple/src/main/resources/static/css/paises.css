@@ -1,26 +1,31 @@
+/* paises.css */
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
     background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
 }
 
 table {
-    width: 60%;
+    width: 80%;
+    margin: 20px auto;
     border-collapse: collapse;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
     border-radius: 8px;
-    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
     padding: 12px;
+    text-align: left;
     border-bottom: 1px solid #ddd;
-    text-align: center;
+    font-size: 14px;
 }
 
 th {
@@ -28,6 +33,20 @@ th {
     color: white;
 }
 
-tr:hover {
-    background-color: #f5f5f5;
+td {
+    color: #555;
 }
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilos adicionales */
+table th, table td {
+    padding: 10px 20px;
+}
+
