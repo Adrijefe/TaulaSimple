@@ -1,5 +1,6 @@
 package com.AdrianPeiro.TaulaSimple.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,16 +18,18 @@ public class Ciudad {
     String descripcio;
     String imagen;
 
-
+    @JsonIgnoreProperties("provincia_id")
     @ManyToOne
     @JoinColumn(name = "provincia_id", nullable = false)
      Provincia provincia;
 
+    @JsonIgnoreProperties("franquicia_ciudad")
+
     @ManyToMany
     @JoinTable(
             name = "franquicia_ciudad",
-            joinColumns = @JoinColumn(name="idfranquicia"),
-            inverseJoinColumns = @JoinColumn(name = "idciudad")
+            joinColumns = @JoinColumn(name="idciudad"),
+            inverseJoinColumns = @JoinColumn(name = "idfranquicia")
     )
     List<Franquicia> franquicia;
 
@@ -85,5 +88,13 @@ public class Ciudad {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public List<Franquicia> getFranquicia() {
+        return franquicia;
+    }
+
+    public void setFranquicia(List<Franquicia> franquicia) {
+        this.franquicia = franquicia;
     }
 }

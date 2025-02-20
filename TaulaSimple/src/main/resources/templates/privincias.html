@@ -11,7 +11,8 @@
     <td th:text="${provincias.nom}"></td>
     <td>
         <ul>
-            <li th:each="provincia : ${provincias.ciudades}" th:text="${provincia}"></li>
+            <li th:each="ciudades : ${provincias.ciudades}" th:text="${ciudades.nom}"></li>
+
         </ul>
     </td>
 </body>

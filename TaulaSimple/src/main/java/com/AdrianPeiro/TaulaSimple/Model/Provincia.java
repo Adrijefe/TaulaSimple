@@ -1,5 +1,6 @@
 package com.AdrianPeiro.TaulaSimple.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -12,13 +13,15 @@ public class Provincia {
 
     @Column(nullable = false)
     private String nom;
-
+    @JsonIgnoreProperties("pais_id")
     @ManyToOne
     @JoinColumn(name = "pais_id", nullable = false)
     private Pais pais;
 
+    @JsonIgnoreProperties("provincia")
     @OneToMany(mappedBy = "provincia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ciudad> ciudades;
+
 
     // Getters y Setters
     public long getId() {
